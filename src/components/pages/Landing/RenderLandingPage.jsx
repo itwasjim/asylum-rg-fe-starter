@@ -95,8 +95,48 @@ function RenderLandingPage(props) {
         </div>
       </div>
       <div>
+
         {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         {/* <div className="bottom-section">*/}
+        <div className="bottom-section">
+          <h1 className="bottom-title">Systemic Disparity Insights</h1>
+          <div className="percentage-wrapper">
+
+            <div className="percentage-container">
+              <span className="percentage-text">36%</span>
+              <div classname="percentage-description">
+                By the end of the Trump administration, the average asylum office grant rate had fallen 36 percent from an average of 44 percent in fiscal year 2016 to 28 percent in fiscal year 2020.
+              </div>
+            </div>
+
+            <div className="percentage-container">
+              <span className="percentage-text">5%</span>
+              <div className="percentage-description">
+                The New York asylum office grant rate dropped to 5 percent in fiscal year 2020.
+              </div>
+            </div>
+
+            <div className="percentage-container">
+              <span className="percentage-text">6x Lower</span>
+              <div className="percentage-description">
+                Between fiscal year 2017 and 2020, the New York asylum office's average grant rate was six times lower than the San Francisco asylum office.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="read-more">
+          <div className="read-more-button">
+            <Button
+             type="default"
+             style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+             onClick={() => history.push('/graphs')} // WIP; Where should this map to?
+            >
+              Read More
+            </Button>
+          </div>
+        </div>
+
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
         </p>
