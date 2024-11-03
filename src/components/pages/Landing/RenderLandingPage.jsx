@@ -17,7 +17,6 @@ import { useHistory } from 'react-router-dom';
 
 // for the purposes of testing PageNav
 // import PageNav from '../../common/PageNav';
-import PageNav from '../../common/PageNav';
 
 function RenderLandingPage(props) {
   const scrollToTop = () => {
@@ -47,6 +46,7 @@ function RenderLandingPage(props) {
           <img
            src={GrantRatesByOfficeImg}
            alt="Grant Rates By Office"
+           className="grant-office-img"
           />
           <p className="graphs-title">Search Grant Rates By Office</p>
         </div>
@@ -55,6 +55,7 @@ function RenderLandingPage(props) {
           <img
            src={GrantRatesByNationalityImg}
            alt="Grant Rates By Nationality"
+           className="grant-nationality-img"
           />
           <p className="graphs-title">Search Grant Rates By Nationality</p>
         </div>
@@ -63,6 +64,7 @@ function RenderLandingPage(props) {
           <img
            src={GrantRatesOverTimeImg}
            alt="Grant Rates Over Time"
+           className="grant-time-img"
           />
           <p className="graphs-title">Search Grant Rates Over Time</p>
         </div>
