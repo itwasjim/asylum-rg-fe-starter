@@ -84,7 +84,9 @@ function RenderLandingPage(props) {
            type="default"
            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
            onClick={() => window.location.href = 'https://humanrightsfirst.org/wp-content/uploads/2022/10/COW2021001887-I589Data.csv'}
-          />
+           >
+            Download the Data
+          </Button>
         </div>
       </div>
 
