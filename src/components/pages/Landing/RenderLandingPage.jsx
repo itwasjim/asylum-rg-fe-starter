@@ -68,14 +68,24 @@ function RenderLandingPage(props) {
         </div>
       </div>
 
-      <div className="view-more-data-btn-container">
-        <Button
-          type="default"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-          onClick={() => history.push('/graphs')}
-        >
-          View the Data
-        </Button>
+      <div className="graphs-btn">
+        <div className="view-more-data-btn-container">
+          <Button
+           type="default"
+           style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+           onClick={() => history.push('/graphs')}
+           >
+            View the Data
+          </Button>
+        </div>
+
+        <div className="download-data-btn-container">
+          <Button
+           type="default"
+           style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+           onClick={() => window.location.href = 'https://humanrightsfirst.org/wp-content/uploads/2022/10/COW2021001887-I589Data.csv'}
+          />
+        </div>
       </div>
 
       <div className="middle-section">
@@ -125,12 +135,12 @@ function RenderLandingPage(props) {
           </div>
         </div>
 
-        <div className="read-more">
-          <div className="read-more-button">
+        <div className="read-more-btn">
+          <div className="read-more-btn-container">
             <Button
              type="default"
              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-             onClick={() => history.push('/graphs')} // WIP; Where should this map to?
+             onClick={() => window.location.href = 'https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/'}
             >
               Read More
             </Button>
