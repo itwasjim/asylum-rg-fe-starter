@@ -10,7 +10,7 @@ import YearLimitsSelect from './YearLimitsSelect';
 import ViewSelect from './ViewSelect';
 import axios from 'axios';
 import { resetVisualizationQuery } from '../../../state/actionCreators';
-import test_data from '../../../data/test_data.json';
+/* import test_data from '../../../data/test_data.json'; (No longer needed) */
 import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
 
@@ -72,6 +72,9 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
+
+    const url = 'https://hrf-asylum-be-b.herokuapp.com/cases';
+    
 
     if (office === 'all' || !office) {
       axios
