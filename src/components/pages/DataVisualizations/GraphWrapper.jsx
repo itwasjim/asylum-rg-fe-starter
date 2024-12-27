@@ -50,6 +50,7 @@ function GraphWrapper(props) {
         break;
     }
   }
+
   function updateStateWithNewData(years, view, office, stateSettingCallback) {
     /*
           _                                                                             _
@@ -73,50 +74,36 @@ function GraphWrapper(props) {
     
     */
 
-    const baseURL = 'https://hrf-asylum-be-b.herokuapp.com/cases';
-    let endpoint =
-      view === 'citizenship' ? '/citizenshipSummary' : '/fiscalSummary';
+    const url = `https://hrf-asylum-be-b.herokuapp.com/cases`;
 
+    // Using Promise.all to fetch both fiscal and citizenship data
     if (office === 'all' || !office) {
-      axios
-        //.get(process.env.REACT_APP_API_URI, {]
-        .get(`${baseURL}${endpoint}`, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-          params: {
-            from: years[0],
-            to: years[1],
-          },
-        })
-        .then(result => {
-          //stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-          stateSettingCallback(
-            view,
-            office,
-            view === 'citizenship' ? result.data : [result.data]
-          );
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    } else {
-      axios
-        //.get(process.env.REACT_APP_API_URI, {
-        // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-        .get(`${baseURL}${endpoint}`, {
-          params: {
-            from: years[0],
-            to: years[1],
-            office: office,
-          },
-        })
-        .then(result => {
-          stateSettingCallback(
-            view,
-            office,
-            view === 'citizenship' ? result.data : [result.data]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+      Promise.all([
+        axios
+          .get(`${url}/fiscalSummary`, {
+            params: {
+              from: years[0],
+              to: years[1],
+              office: office,
+            },
+          }),
+        axios
+          .get(`${url}/citizenshipSummary`, {
+            params: {
+              from: years[0],
+              to: years[1],
+              office: office,
+            },
+          }),
+      ])
+        .then(([callA, callB]) => {
+          const yearResults = callA.data.yearResults;
+          const citizenshipResults = callB.data;
+          const combinedData = [{ yearResults, citizenshipResults }];
+          stateSettingCallback(view, office, combinedData);
         })
         .catch(err => {
-          console.error(err);
+          console.log(err);
         });
     }
   }
